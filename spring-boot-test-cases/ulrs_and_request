@@ -1,0 +1,28 @@
+Executing the Http Get Operation Using Postman
+We will fire a request to http://localhost:8080/students/Student1/courses/Course1 to test the service. Response is as shown below.
+
+{
+  "id": "Course1",
+  "name": "Spring",
+  "description": "10Steps",
+  "steps": [
+    "Learn Maven",
+    "Import Project",
+    "First Example",
+    "Second Example"
+  ]
+}
+
+Http POST Operation . Make sure you go to the Body tab and select raw. Select JSON from the dropdown. Copy below request into body.
+
+{
+  "name": "Microservices",
+  "description": "10Steps",
+  "steps": [
+    "Learn How to Break Things Up",
+    "Automate the hell out of everything",
+    "Have fun"
+  ]
+}
+
+The URL we use is http://localhost:8080/students/Student1/courses.

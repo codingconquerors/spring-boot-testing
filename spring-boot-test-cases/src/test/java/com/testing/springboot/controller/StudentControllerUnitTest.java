@@ -1,9 +1,5 @@
 package com.testing.springboot.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Arrays;
-
 import com.testing.springboot.model.Course;
 import com.testing.springboot.service.StudentService;
 import org.junit.jupiter.api.Test;
@@ -23,9 +19,13 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(value = StudentController.class)
-class StudentControllerTest {
+class StudentControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;

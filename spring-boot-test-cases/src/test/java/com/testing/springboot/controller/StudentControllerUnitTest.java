@@ -23,17 +23,20 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(SpringExtension.class)
+//@ExtendWith(SpringExtension.class) //SpringExtension integrates the Spring TestContext Framework into JUnit 5's Jupiter programming model.
 @WebMvcTest(value = StudentController.class)
 class StudentControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    //@MockBean is a Spring test framework annotation and used along with @ExtendWith(SpringExtension.class)
     @MockBean
     private StudentService studentService;
 
     Course mockCourse = new Course("Course1", "Spring", "10 Steps", Arrays.asList("Learn Maven", "Import Project", "First Example", "Second Example"));
+    Course mockCourse2 = new Course("Course1", "Spring", "10 Steps", Arrays.asList("Learn Maven", "Import Project", "First Example", "Second Example"));
+    Course mockCourse3 = new Course("Course1", "Spring", "10 Steps", Arrays.asList("Learn Maven", "Import Project", "First Example", "Second Example"));
 
     String exampleCourseJson = "{\"name\":\"Spring\",\"description\":\"10 Steps\",\"steps\":[\"Learn Maven\",\"Import Project\",\"First Example\",\"Second Example\"]}";
 
@@ -42,7 +45,8 @@ class StudentControllerUnitTest {
 
         Mockito.when(
                 studentService.retrieveCourse(Mockito.anyString(),
-                        Mockito.anyString())).thenReturn(mockCourse);
+                        Mockito.anyString()))
+                .thenReturn(mockCourse);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
                 "/students/Student1/courses/Course1").accept(

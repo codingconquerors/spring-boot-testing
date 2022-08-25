@@ -7,6 +7,7 @@ import com.testing.springboot.model.Course;
 import com.testing.springboot.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +23,19 @@ public class StudentController {
 
 	@GetMapping("/students/{studentId}/courses")
 	public List<Course> retrieveCoursesForStudent(@PathVariable String studentId) {
-		return studentService.retrieveCourses(studentId);
+		System.out.println("s1");
+		System.out.println("s2");
+
+		List<Course> courseList = studentService.retrieveCourses(studentId);
+		System.out.println("s2");
+		return courseList;
 	}
 	
 	@GetMapping("/students/{studentId}/courses/{courseId}")
 	public Course retrieveDetailsForCourse(@PathVariable String studentId, @PathVariable String courseId) {
+		if(StringUtils.isEmpty(studentId)){
+			return null;
+		}
 		return studentService.retrieveCourse(studentId, courseId);
 	}
 
